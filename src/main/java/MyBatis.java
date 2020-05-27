@@ -158,7 +158,7 @@ public class MyBatis {
 
                 //MODIFY
              } else if (action.equals("modify")) {
-                    System.out.print("Enter the group [people, teams or sports]: ");
+                    System.out.print("Enter the group --> people | teams | sports : ");
                     String group = sc.next();
 
                     if (group.equals("people")) {
@@ -168,7 +168,7 @@ public class MyBatis {
                                 if (p.getSurname2() == null) p.setSurname2("");
                                 Nationalities n = mapper.getNationality(p.getNationality());
                                 System.out.printf(
-                                        "+-------------+----------+-------------------+-------------------+-------------------+----------+-------+------------------------+--------------+-------------+--------+---------------------------------+---------------------------------+\n|     DNI     |  DORSAL  |       NAME        |   FIRST SURNAME   |  SECOND SURNAME   |  GENDER  |  AGE  |      NATIONALITY       |  COMP. WINS  |   SALARY    |  TYPE  |              DEBUT              |             RETIRED             |\n+-------------+----------+-------------------+-------------------+-------------------+----------+-------+------------------------+--------------+-------------+--------+---------------------------------+---------------------------------+\n|  %9s  |    %2d    |  %15s  |  %15s  |  %15s  |  %6s  |   %2s  |  %20s  |  %10d  |  %9d  |  %4d  |  %29s  |  %29s  |\n+-------------+----------+-------------------+-------------------+-------------------+----------+-------+------------------------+--------------+-------------+--------+---------------------------------+---------------------------------+\n",
+                                        "*-------------*----------*-------------------*-------------------*-------------------*----------*-------*------------------------*--------------*-------------*--------*---------------------------------*---------------------------------+\n|     DNI     |  DORSAL  |       NAME        |   FIRST SURNAME   |  SECOND SURNAME   |  GENDER  |  AGE  |      NATIONALITY       |  COMP. WINS  |   SALARY    |  TYPE  |              DEBUT              |             RETIRED             |\n*-------------*----------*-------------------*-------------------*-------------------*----------*-------*------------------------*--------------*-------------*--------*---------------------------------*---------------------------------*\n|  %9s  |    %2d    |  %15s  |  %15s  |  %15s  |  %6s  |   %2s  |  %20s  |  %10d  |  %9d  |  %4d  |  %29s  |  %29s  |\n*-------------*----------*-------------------*-------------------*-------------------*----------*-------*------------------------*--------------*-------------*--------*---------------------------------*---------------------------------*\n",
                                         p.getDNI(), p.getDorsals(), p.getName(), p.getSurname1(), p.getSurname2(), p.getSex(), p.getAge(), n.getName(), p.getCompetitions_wins(), p.getSalary(), p.getType(), p.getDebut(), p.getRetired());
 
                                 System.out.print("Dorsal: ");
@@ -201,10 +201,10 @@ public class MyBatis {
                                 int team = sc.nextInt();
 
                                 mapper.updatePerson(p);
-                                System.out.println("Player successfully modified!");
+                                System.out.println("Player modified");
 
                             } else
-                                System.out.println("The player's DNI is incorrect or doesn't exists.");
+                                System.out.println("The player's DNI is incorrect or doesn't exists");
 
                     }  else if (group.equals("sports")) {
                         System.out.println("Insert sport's ID: ");
@@ -213,7 +213,7 @@ public class MyBatis {
                         Sports s = mapper.getSport(id);
                         if (s != null) {
                             System.out.printf(
-                                    "+--------+-------------------+\n|   ID   |       NAME        |\n+--------+-------------------+\n|  %4d  |  %15s  |\n+--------+-------------------+\n",
+                                    "*--------*-------------------*\n|   ID   |       NAME        |\n*--------*-------------------*\n|  %4d  |  %15s  |\n*--------*-------------------*\n",
                                     s.getId(), s.getName());
 
                             System.out.println("Name: ");
@@ -221,18 +221,18 @@ public class MyBatis {
 
                             Sports s2 = new Sports(s.getId(), name);
                             mapper.updateSport(s2);
-                            System.out.println("Sport successfully modified!");
+                            System.out.println("Sport modified");
 
                         } else
-                            System.out.println("The sport's ID is incorrect or doesn't exists.");
+                            System.out.println("The sport's ID is incorrect or doesn't exists");
 
                     } else
-                        System.out.println("Incorrect group.");
+                        System.out.println("Invalid group.");
 
 
             //delete
             } else if (action.equals("delete")) {
-                System.out.print("Enter the group [people, teams or sports]: ");
+                System.out.print("Enter the group --> people | teams | sports : ");
                 String group = sc.next();
 
                 if (group.equals("people")) {
@@ -242,26 +242,26 @@ public class MyBatis {
                         if (p.getSurname2() == null) p.setSurname2("");
                         Nationalities n = mapper.getNationality(p.getNationality());
                         System.out.printf(
-                                "+-------------+----------+-------------------+-------------------+-------------------+----------+-------+------------------------+--------------+-------------+--------+---------------------------------+--------------------------------+\n|     DNI     |  DORSAL  |       NAME        |   FIRST SURNAME   |  SECOND SURNAME   |  GENDER  |  AGE  |      NATIONALITY       |  COMP. WINS  |   SALARY    |  TYPE  |              DEBUT              |            RETIRED             |\n+-------------+----------+-------------------+-------------------+-------------------+----------+-------+------------------------+--------------+-------------+--------+---------------------------------+--------------------------------+\n|  %9s  |    %2d    |  %15s  |  %15s  |  %15s  |  %6s  |   %2s  |  %20s  |  %10d  |  %9d  |  %4d  |  %28s  |  %28s  |\n+-------------+----------+-------------------+-------------------+-------------------+----------+-------+------------------------+--------------+-------------+--------+---------------------------------+--------------------------------+\n",
+                                "*-------------*----------*-------------------*-------------------*-------------------*----------*-------*------------------------*--------------*-------------*--------*---------------------------------*--------------------------------*\n|     DNI     |  DORSAL  |       NAME        |   FIRST SURNAME   |  SECOND SURNAME   |  GENDER  |  AGE  |      NATIONALITY       |  COMP. WINS  |   SALARY    |  TYPE  |              DEBUT              |            RETIRED             |\n*-------------*----------*-------------------*-------------------*-------------------*----------*-------*------------------------*--------------*-------------*--------*---------------------------------*--------------------------------*\n|  %9s  |    %2d    |  %15s  |  %15s  |  %15s  |  %6s  |   %2s  |  %20s  |  %10d  |  %9d  |  %4d  |  %28s  |  %28s  |\n*-------------*----------*-------------------*-------------------*-------------------*----------*-------*------------------------*--------------*-------------*--------*---------------------------------*--------------------------------*\n",
                                 p.getDNI(), p.getDorsals(), p.getName(), p.getSurname1(), p.getSurname2(), p.getSex(), p.getAge(), n.getName(), p.getCompetitions_wins(), p.getSalary(), p.getType(), p.getDebut());
 
                         p.getDNI();
 
                     } else
-                        System.out.println("The player's DNI is incorrect or doesn't exists.");
+                        System.out.println("The player's DNI is incorrect or doesn't exists");
 
-                    System.out.println("Are you sure to delete the player? ALERT: This action has no turning back! (yes / no)");
+                    System.out.println("Are you sure to delete the player? ALERT: This action has no turning back (yes / no)");
                     String conf = sc.next();
 
                     if (conf.equals("yes")) {
                         mapper.deletePerson(p);
-                        System.out.println("Person successfully deleted!");
+                        System.out.println("Person deleted");
 
                     } else if (conf.equals("no"))
-                        System.out.println("Person not deleted!");
+                        System.out.println("Person not deleted");
 
                     else
-                        System.out.println("Confirmation rejected, person not deleted!");
+                        System.out.println("Confirmation rejected, person not deleted");
 
                 } else if (group.equals("teams")) {
                     System.out.print("Insert ID of team: ");
@@ -272,42 +272,42 @@ public class MyBatis {
                                 "+--------+-----------------------------+------------------------+----------+\n|   ID   |            NAME             |      NATIONALITY       |  GENDER  |\n+--------+-----------------------------+------------------------+----------+\n|  %4d  |  %25s  |  %20s  |  %6s  |\n+--------+-----------------------------+------------------------+----------+\n",
                                 t.getId(), t.getName(), n.getName(), t.getGender());
                     } else
-                        System.out.println("The team id is incorrect or doesn't exists.");
+                        System.out.println("Invalid ID");
 
-                    System.out.println("Are you sure to delete the team? ALERT: This action has no turning back! (yes / no)");
+                    System.out.println("Are you sure to delete the team? ALERT: This action has no turning back (yes / no)");
                     String conf = sc.next();
 
                     if (conf.equals("yes")) {
                         mapper.deleteTeam(t.getId());
-                        System.out.println("Team successfully deleted!");
+                        System.out.println("Team deleted");
                     } else if (conf.equals("no"))
-                        System.out.println("Team not deleted!");
+                        System.out.println("Team not deleted");
                     else
-                        System.out.println("Confirmation rejected, team not deleted!");
+                        System.out.println("Confirmation rejected, team not deleted");
 
                 } else if (group.equals("sports")) {
                     System.out.print("ID of sport: ");
                     Sports s = mapper.getSport(sc.nextInt());
                     System.out.printf(
-                            "+--------+-------------------+\n|   ID   |       NAME        |\n+--------+-------------------+\n|  %4d  |  %15s  |\n+--------+-------------------+\n",
+                            "*--------*-------------------*\n|   ID   |       NAME        |\n*--------*-------------------*\n|  %4d  |  %15s  |\n*--------*-------------------*\n",
                             s.getId(), s.getName());
 
-                    System.out.println("Are you sure to delete the sport? ALERT: This action has no turning back! (yes / no)");
+                    System.out.println("Are you sure to delete the sport? ALERT: This action has no turning back (yes / no)");
                     String conf = sc.next();
 
                     if (conf.equals("yes")) {
                         mapper.deleteSport(s.getId());
-                        System.out.println("Sport successfully deleted!");
+                        System.out.println("Sport deleted");
                     } else if (conf.equals("no"))
-                        System.out.println("Sport not deleted!");
+                        System.out.println("Sport not deleted");
                     else
-                        System.out.println("Confirmation rejected, sport not deleted!");
+                        System.out.println("Confirmation rejected, sport not deleted");
 
                 } else
-                    System.out.println("Incorrect group.");
+                    System.out.println("Invalid group");
 
             } else
-                System.out.println("Incorrect action.");
+                System.out.println("Invalid action.");
 
             System.out.print("Do you want to continue? (yes, no): ");
             if (sc.next().equals("no")) keep = false;
